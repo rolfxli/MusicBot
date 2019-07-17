@@ -1,5 +1,5 @@
 {
-  "name": "Jisoo Music",
+  "name": "Jisoo",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -7,9 +7,10 @@
     "dev": "nodemon index.js"
   },
   "dependencies": {
-    "discord.js": "^11.4.2"
+    "discord.js": "^11.5.1",
+    "dotenv": "^8.0.0"
   },
   "devDependencies": {
-    "nodemon": "^1.18.9"
+    "nodemon": "^1.19.1"
   }
 }
