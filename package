@@ -1,8 +1,0 @@
-{
-  "name": "Weather-Bot",
-  "version": "1.0.0",
-  "description": "Trying to get the weather!",
-  "main": "bot.js",
-  "author": "Rolf Li",
-  "dependencies": {}
-}
