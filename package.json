@@ -9,6 +9,8 @@
   "dependencies": {
     "discord.js": "^11.5.1",
     "dotenv": "^8.0.0",
+    "ffmpeg": "0.0.4",
+    "ffmpeg-binaries": "^4.0.0",
     "ytdl-core": "^0.29.3"
   },
   "devDependencies": {

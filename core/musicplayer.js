@@ -12,7 +12,7 @@ class musicplayer {
         this.connection = null;
         this.options = {
             seek: 0,
-            volume: 0.2
+            volume: 1
         };
         this.queue = new queue;
         this.playing = null;

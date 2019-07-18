@@ -132,9 +132,11 @@ class bot {
         this.musicPlayer.shuffle();
 
     }
+
     setVoiceChannel (chanID) {
         this.voice.channel = this.client.channels.get(chanID)
     }
+
     setTextChannel (chanID) {
         this.text.channel = this.client.channels.get(chanID)
     }
