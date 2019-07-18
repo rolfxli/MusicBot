@@ -18,6 +18,8 @@ class Bot {
 
     }
 
+    // turn on music player --> musicplayer.on
+
     play(song) {
 
     }
