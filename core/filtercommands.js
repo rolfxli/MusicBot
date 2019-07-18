@@ -1,6 +1,7 @@
 const commands = require('./commands')
 const commandqueue = require('./commandsqueue')
 
+
 class filtercommands {
     constructor() {
         this.commands = new commandqueue;

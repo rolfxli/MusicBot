@@ -6,6 +6,7 @@ const bot = require('./bot')
 
 var Jisoo = new bot();
 
+// implement from https://www.freecodecamp.org/news/how-to-create-a-music-bot-using-discord-js-4436f5f3f0f8/
 
 // --------- handle messages --------- //
 
