@@ -7,7 +7,6 @@ const command = require('./core/command')
 
 var Jisoo = new bot();
 
-// implement from https://www.freecodecamp.org/news/how-to-create-a-music-bot-using-discord-js-4436f5f3f0f8/
 
 // --------- handle messages --------- //
 
@@ -26,6 +25,9 @@ Jisoo.client.on('message', msg => {
     if (msg.author.bot) {
         return;
     }
+    if(msg.channel.type === 'dm') {
+        return false;
+    }
     else if (msg.content.startsWith('!play')) {
         Jisoo.play(msg);
     }
@@ -39,21 +41,16 @@ Jisoo.client.on('message', msg => {
         Jisoo.shuffle();
     }
     else if (msg.content.startsWith('!ping')) {
-        msg.channel.send('pong');
+        Jisoo.message('You found me!', null);
+    }
+    else if (msg.content.startsWith('!help')) {
+        Jisoo.help();
     }
     else {
-        msg.channel.send('Invalid command!');
+        Jisoo.message('Invalid command!', null);
     }
 
-/*
-    if(message.channel.type === 'dm') {
-        return false;
-    }
-
-    request.processMessage(Jisoo, message);
-
-
- */
+    //request.processMessage(Jisoo, message);
 });
 
 Jisoo.login(process.env.BOT_TOKEN);

@@ -12,13 +12,11 @@ class musicplayer {
         this.connection = null;
         this.options = {
             seek: 0,
-            volume: 1
+            volume: 5
         };
         this.queue = new queue;
         this.playing = null;
         this.eventemitter = new EventEmitter();
-
-
     }
 
     on(event, callback) {
@@ -40,7 +38,7 @@ class musicplayer {
             this.emitter('play', currently_playing);
 
             let music = ytdl(currently_playing.url, {filter: 'audioonly', quality: 'lowest'});
-            this.controller.connection.playStream(music);
+            this.controller = this.connection.playStream(music);
 
             this.controller.on('end', () => {
                 if(!this.queue.isempty()) {
@@ -80,8 +78,6 @@ class musicplayer {
     add(input) {
         this.queue.add(input);
     }
-
-
 }
 
 module.exports = musicplayer;

@@ -10,9 +10,8 @@ class song {
     get url() {
         return 'https://youtube.com/watch?v=' + this.id;
     }
+    */
 
-    // add resolve title method
-     */
 }
 
 module.exports = song;
