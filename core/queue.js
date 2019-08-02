@@ -68,7 +68,7 @@ class queue {
     remove(pos) {
         let removed = this.list.delete(pos);
         if (removed) {
-            this.list.shift(removed);
+            this.list.shift();
         }
         else {
             return false;

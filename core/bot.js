@@ -24,7 +24,6 @@ class bot {
 
         this.musicPlayer.on('play', song => {
             this.message('Now playing: ' + song.title)
-            //this.setPlaying(song.title)
         });
         this.musicPlayer.on('end', () => {
             let connections = this.client.voiceConnections.first().channel.members.array();
@@ -42,12 +41,12 @@ class bot {
 
     join (id) {
         if (!this.voice.connection) {
-            this.isConnecting = true
+            this.isConnecting = true;
             if (!id) {
-                return this.voice.channel.join()
+                return this.voice.channel.join();
             } else {
-                this.voice.channel = this.client.channels.get(id)
-                return this.voice.channel.join()
+                this.voice.channel = this.client.channels.get(id);
+                return this.voice.channel.join();
             }
         }
     }
@@ -58,10 +57,9 @@ class bot {
             this.musicPlayer.controller.end();
         }
         if (this.connection) {
-            this.voice.channel.leave()
+            this.voice.channel.leave();
             this.connection = null
         }
-
     }
 
     message(msg, callback) {
@@ -90,33 +88,44 @@ class bot {
         }
     }
 
-    // setplaying()
-
-    play(input) {
-        /*
-        const args = message.content.split(' ');
-        const vchannel = in.member.voiceChannel;
-        const permissions = vchannel.permissionsFor(message.client.user);
-
-        if(!vchannel) {
-            message.reply('You are not in an active voice channel!')
-        }
-        if (!permissions.has('CONNECT') || !permissions.has('SPEAK')) {
-            return message.channel.send('I need the permissions to join and speak in your voice channel!');
-        }
-
-         */
-
+    // this is an alternate version
+    async play(input) {
         const args = input.content.split(' ');
-        const info = ytdl.getInfo(args[1]);
+        const info = await ytdl.getInfo(args[1]);
         const Song = new song(info);
-
-        //this.message('Added ' + Song.title + 'to queue.', null);
+        this.message('Added ' + Song.title + ' to queue.', null);
         this.musicPlayer.add(Song);
-
         this.checkConnection();
     }
 
+    /*
+
+    parsePlay(input, callback) {
+        const args = input.content.split(' ');
+        const info = ytdl.getInfo(args[1]);
+        const Song = new song(info);
+        if (callback) {
+            callback(Song);
+        }
+    }
+
+    play(input) {
+        this.parsePlay(input, (invalue) => {
+            this.message('Added ' + invalue.title + ' to queue.', null);
+            this.musicPlayer.add(invalue);
+            this.checkConnection();
+        });
+    }
+
+     */
+
+    help() {
+        this.message('Looks like you need help, here are some commands:' +
+            '!play url: plays the music from the given url' +
+            '!stop: stop the music from playing' +
+            '!skip: skips the current song' +
+            '!playlist create......', null);
+    }
 
     stop() {
         this.musicPlayer.stop();
